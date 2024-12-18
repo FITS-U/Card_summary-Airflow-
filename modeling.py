@@ -9,9 +9,9 @@ from langchain_openai import OpenAIEmbeddings
 import os
 import time
 import json
-
-os.environ["OPENAI_API_KEY"]='SECRET-KEY'
-
+from dotenv import load_dotenv
+load_dotenv()
+from date_file import db_path_card_summary
 # import pandas as pd
 def load_embedding_model():
     
@@ -107,12 +107,13 @@ def exact_id(vectorstore, query):
 
 
 def summary_chatbot(query):
-   vectorstore=load_vector("C:/Users/user/Desktop/final_summary/chromadb")
+   vectorstore=load_vector(db_path_card_summary())
    retriever=vectorstore.as_retriever(search_kwargs={'k':1})
 
    # Prompt 설정
    cardName=exact_name(vectorstore, query)
    cardId=exact_id(vectorstore, query)
+   
    template = f"""
    {system_prompt}
    질문:{query}
@@ -148,39 +149,3 @@ def summary_chatbot(query):
       "query": query
     })
 
-# def store_json():
-#    file_path=
-#    with open()
-
-
-
-
-# card_result=summary_chatbot("신한카드 Mr.Life")
-# import json
-
-# load는 json파일을 읽을 때, loads는 str타입을 읽을 때
-
-# query="신한카드 Mr.Life"
-
-# # json형태로 바꾸기
-# llm_output=summary_chatbot(query)["result"]
-
-# # list로 변환
-# json_data=json.loads(llm_output)
-
-
-# # json 문자열로 변환
-# result1=json.dumps(json_data,indent=4,ensure_ascii=False)
-
-
-
-
-
-#카테고리아이디
-
-#benefitTitle
-
-#description
-
-#신한카드 Mr.Life (카드명) 추출하는 코드
-# print(json_data[0]["cardName"])

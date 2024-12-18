@@ -76,3 +76,4 @@ for query in query_list:
         print("complete")
 
 
+mydb.close()
