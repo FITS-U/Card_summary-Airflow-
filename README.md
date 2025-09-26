@@ -52,6 +52,7 @@
   PostgreSQL 저장 (`db_store.py`): LLM이 생성한 최종 JSON 데이터를 PostgreSQL 데이터베이스에 삽입하여 영구적으로 저장합니다.
 
 ## 📂 프로젝트 구조
+
 ```
 Card_summary-Airflow-/
 ├── dags/
