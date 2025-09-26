@@ -50,4 +50,29 @@
 4. LLM 추론 (`modeling.py`, `data_for_pro.py`): 저장된 벡터를 기반으로 RAG 파이프라인을 구성합니다. 각 카드에 대해 LLM(GPT)이 핵심 혜택을 추출하여 구조화된 JSON으로 생성합니다.
 
   PostgreSQL 저장 (`db_store.py`): LLM이 생성한 최종 JSON 데이터를 PostgreSQL 데이터베이스에 삽입하여 영구적으로 저장합니다.
+
+## 📂 프로젝트 구조
+```
+Card_summary-Airflow-/
+├── dags/
+│   ├── final_dags.py             # 메인 DAG
+│   └── card_summary_dags.py      # 혜택 요약 및 저장 서브 DAG
+│
+├── scripts/
+│   ├── data_crawling.py          # Selenium 웹 크롤러
+│   ├── modeling.py               # LangChain, OpenAI 모델링 (RAG)
+│   ├── chromadb_store.py         # ChromaDB 벡터 저장소 생성
+│   ├── db_store.py               # PostgreSQL 데이터 저장
+│   ├── data_for_pro.py           # 데이터 처리 유틸리티
+│   └── date_file.py              # 날짜 기반 파일 경로 생성 유틸리티
+│
+├── data/
+│   ├── card_data_benefits.json   # 크롤링된 카드 혜택 원본 데이터
+│   ├── CardInfo.csv              # 크롤링된 카드 기본 정보
+│   ├── CardImage.csv             # 크롤링된 카드 이미지 URL
+│   └── chroma.sqlite3            # ChromaDB 데이터 파일
+│
+└── requirements.txt              # 파이썬 패키지 목록
+```
+
    
