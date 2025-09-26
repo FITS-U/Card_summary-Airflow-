@@ -55,7 +55,7 @@
 
 ```
 Card_summary-Airflow-/
-├── dags/
+├── airflow_files/
 │   ├── final_dags.py             # 메인 DAG
 │   └── card_summary_dags.py      # 혜택 요약 및 저장 서브 DAG
 │
